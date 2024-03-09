@@ -9,6 +9,18 @@ public class Main {
             System.out.println("Connection established");
 
             Statement dbStatement = dbConnection.createStatement();
+            dbStatement.execute("INSERT INTO `chelneri` (`nume`) VALUES ('Ion')");
+            dbStatement.execute("INSERT INTO `chelneri` (`nume`) VALUES ('Mihai')");
+            dbStatement.execute("INSERT INTO `chelneri` (`nume`) VALUES ('Sergiu')");
+            dbStatement.execute("INSERT INTO `chelneri` (`nume`) VALUES ('Doina')");
+
+            System.out.println("Inserarea a fost executata cu succes.");
+
+            ResultSet result = dbStatement.executeQuery("SELECT * FROM `chelneri`");
+
+            while (result.next()) {
+                System.out.println("ID: " + result.getInt("id") + " Name: " + result.getString("name"));
+            } dbConnection.close();
             //dbStatement.execute({sql query}) for insert
             //ResultSet <data name> = dbStatement.ExecuteQuery({ sql query }) for select
 
